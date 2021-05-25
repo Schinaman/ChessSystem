@@ -1,5 +1,6 @@
 package boardLayer;
 
-public class piece {
-
+public class piece extends Position {
+	
+	public void possibleMoves()
 }

@@ -1,8 +1,13 @@
 package Application;
+
+import boardLayer.Position;
+
 public class application {
 
 	public static void main(String[] args) {
-		System.out.println("Hello World");
+		Position position = new Position();
+		position.setValues(1,2);
+		System.out.println(position.toString());
 
 	}
 
