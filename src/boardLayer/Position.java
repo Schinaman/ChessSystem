@@ -5,11 +5,11 @@ public class Position {
 	private int row;
 	
 
-	public char getColumn() {
+	public int getColumn() {
 		return column;
 	}
 
-	public void setColumn(char column) {
+	public void setColumn(int column) {
 		this.column = column;
 	}
 
@@ -21,7 +21,10 @@ public class Position {
 		this.row = row;
 	}
 
-	public void Position(int row, int column) {
+	public Position() {
+	}
+	
+	public Position(int row, int column) {
 		this.row = row;
 		this.column = column;	
 	}
