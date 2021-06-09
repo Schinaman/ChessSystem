@@ -4,7 +4,7 @@ public class Board {
 
 	private int rows;
 	private int cols;
-	private Piece[][] pieces; //pq eu to criando um objeto matriz de peças?!
+	private Piece[][] pieces; //pq eu to criando um objeto matriz de peças?! É uma propriedade, cada elemento da matriz é um objeto que representa qual peça esta alocada em determinada posição no tabuleiro; 
 		
 	public Board(int rows, int cols) {
 		this.rows = rows;
@@ -37,6 +37,11 @@ public class Board {
 	
 	public Piece piece(Position position) {
 		return pieces[position.getRow()][position.getColumn()];
+	}
+	
+	public void placePiece(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColumn()] = piece; 
+		piece.position = position; //position como propriedade da piece
 	}
 	/*
 	 public Piece removePiece(Position position) {
