@@ -4,7 +4,7 @@ import boardLayer.Board;
 import boardLayer.Position;
 import chessLayer.ChessMatch;
 
-public class application {
+public class Application {
 
 	public static void main(String[] args) {
 		testaChessMatch();
