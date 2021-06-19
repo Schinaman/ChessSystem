@@ -36,7 +36,7 @@ public class ChessPosition {
 		//if (column < 'a' || column > 'h' || row < 1 || row > 8) { // NAO FAZ SENTIDO ESSA PROGRAMACAO DEFENSIVA aqui?
 		//	throw new ChessException("A ChessPosition não existe: " + column + "," + row);
 		//}
-		return new Position(8-row, column - 'a');
+		return new Position(8-row, column - 'a'); //output: (0;1)
 	}
 
 	protected static ChessPosition fromPosition(Position position) {// pq é static? pq eu vou usar esse metodo em todas as classes referenciando esse formato de posicao?

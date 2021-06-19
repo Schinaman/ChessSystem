@@ -50,18 +50,28 @@ public class Board {
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position; // position como propriedade da piece
 	}
-	/*
-	 * public Piece removePiece(Position position) { return piece; }
-	 */
+	
+	public Piece removePiece(Position position) { 
+		if (!positionExists(position)) {
+			throw new BoardException("Nao eh possivel remover uma peca nesta posicao: " + position);
+		}
+		if (piece(position) == null){
+			return null;
+		}		
+		Piece aux  = piece(position);
+		aux.position = null; // só os atributos de position serão nulos; outros mantidos (color, board, "King")
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
 
 	private boolean positionExists(int row, int col) {
 		return (row >= 0 && row <= rows && col >= 0 && col <= cols);
 	}
-	private boolean positionExists(Position position) {
+	public boolean positionExists(Position position) {
 		return (positionExists(position.getRow(),position.getColumn()));
 	}
 
-	private boolean thereIsAPiece(Position position) {
+	public boolean thereIsAPiece(Position position) {
 		if (!positionExists(position)) { // Programacao defensiva
 			throw new BoardException("Position não existe no tabuleiro: " + position );
 		}

@@ -1,6 +1,10 @@
 package Application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import chessLayer.ChessPiece;
+import chessLayer.ChessPosition;
 import chessLayer.Color;
 
 public class UI {
@@ -25,6 +29,18 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+	public static ChessPosition readChessPosition(Scanner sc) {
+		try {
+		String s = sc.nextLine();
+		char col = s.charAt(0);
+		int row = Integer.parseInt(s.substring(1));
+		return new ChessPosition(col, row);
+		}
+		catch (RuntimeException e) {
+			throw new InputMismatchException("Erro lendo posicao de xadrez. valores validos sao de a1-h8");
+		}
+	}
+	
 	public static void printBoard(ChessPiece[][] pieces) { // o que significa exatamente uma matriz do tipo ChessPiece?
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print(8 - i + " ");
