@@ -32,7 +32,7 @@ public class ChessMatch {
 		
 		validateSourcePosition(source);
 		Piece capturedPiece = makeMove(source, target);
-		return (ChessPiece)capturedPiece; //o que que eu faço com esse retorno?! 
+		return (ChessPiece)capturedPiece; //o que que eu faço com esse retorno?!  é retorno é para, por exemplo, imprimir as peças capturadas?
 		//validateTagertPosition(target);
 	}
 	
@@ -40,7 +40,7 @@ public class ChessMatch {
 		Piece p = board.removePiece(source);
 		Piece capturedPiece = board.removePiece(target);
 		board.placePiece(p, target);
-		return capturedPiece; //o que que eu faço com esse retorno?!
+		return capturedPiece; //o que que eu faço com esse retorno?! é retorno é para, por exemplo, imprimir as peças capturadas?
 	}
 	
 	private void validateSourcePosition(Position position) {

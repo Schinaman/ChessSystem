@@ -1,9 +1,11 @@
 package Application;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import boardLayer.Board;
 import boardLayer.Position;
+import chessLayer.ChessException;
 import chessLayer.ChessMatch;
 import chessLayer.ChessPiece;
 import chessLayer.ChessPosition;
@@ -12,7 +14,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		testaMovimentacaoPecas();f
+		testaMovimentacaoPecas();
 	}
 
 	
@@ -23,18 +25,27 @@ public class Application {
 		ChessMatch chessMatch = new ChessMatch();
 		
 		while (true) {
-			UI.printBoard(chessMatch.getPieces());
-			System.out.println();
-			System.out.println("Source: ");
-			ChessPosition source = UI.readChessPosition(sc);
-			
-			System.out.println();
-			System.out.println("Target ");
-			ChessPosition target = UI.readChessPosition(sc);
-			
-			ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-			System.out.println(capturedPiece);
-			
+			try {
+				UI.clearScreen();
+				UI.printBoard(chessMatch.getPieces());
+				System.out.println();
+				System.out.println("Source: ");
+				ChessPosition source = UI.readChessPosition(sc);
+				
+				System.out.println();
+				System.out.println("Target ");
+				ChessPosition target = UI.readChessPosition(sc);
+				
+				ChessPiece capturedPiece = chessMatch.performChessMove(source, target); //o retorno é para, por exemplo, imprimir as peças capturadas?
+			}
+			catch (ChessException e){ // na classe eu só estou lançando a exceção, o tratamento ocorre aqui (continuidade do codigo);
+				System.out.println(e.getMessage());
+				sc.nextLine();
+			}
+			catch (InputMismatchException e){
+				System.out.println(e.getMessage());
+				sc.nextLine();
+			}
 		 }
 	}
 	
