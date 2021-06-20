@@ -1,6 +1,6 @@
 package boardLayer;
 
-public class Piece extends Position { // aonde tá essa herença no diagrama?
+public abstract class Piece extends Position { // aonde tá essa herença no diagrama?
 	
 	protected Position position;
 	private Board board; // seguindo diagrama de classes a relação entre classe Board e Piece implica na criação de objeto board em Piece e piece em Board; 
@@ -14,15 +14,21 @@ public class Piece extends Position { // aonde tá essa herença no diagrama?
 		return board;
 	}
 	
-	public boolean[][] possibleMoves() {
-		return possibleMoves();
-	}
+	public abstract boolean[][] possibleMoves();
 	
 	public boolean possibleMove(Position position) {
-		return true;
+		return possibleMoves()[position.getRow()][position.getColumn()]; //rook methods; metodo concreto esta utilizando um metodo abstrato //sintaxe maluco, entender bem;  
 	}
 	
 	public boolean isThereAnyPossibleMove() {
-		return true;
+		boolean[][] mat = possibleMoves();
+		for (int i=0; i<mat.length; i++) {
+			for (int j=0; j<mat.length; j++) {
+				if (mat[i][j]) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }

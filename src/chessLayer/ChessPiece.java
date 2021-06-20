@@ -2,7 +2,7 @@ package chessLayer;
 import boardLayer.Board;
 import boardLayer.Piece;
 
-public class ChessPiece extends Piece { //reclama que não possui construtor poque é classe filha de Piece, como tem construtor lá tem que ter aqui também.
+public abstract class ChessPiece extends Piece { //reclama que não possui construtor poque é classe filha de Piece, como tem construtor lá tem que ter aqui também.
 
 	private Color color;
 	private int moveCount;
