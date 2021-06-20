@@ -31,9 +31,10 @@ public class ChessMatch {
 		Position target = targetPosition.toPosition();
 		
 		validateSourcePosition(source);
+		validateTagertPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
 		return (ChessPiece)capturedPiece; //o que que eu faço com esse retorno?!  é retorno é para, por exemplo, imprimir as peças capturadas?
-		//validateTagertPosition(target);
+	
 	}
 	
 	private Piece makeMove (Position source, Position target) {
@@ -49,6 +50,12 @@ public class ChessMatch {
 		}
 		if (!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException ("Nao existe movimentacao possivel para peca escolhida");
+		}
+	}
+	
+	private void validateTagertPosition(Position source, Position target) {
+		if (!board.piece(source).possibleMove(target)) {
+			throw new ChessException ("A peca escolhida nao pode ser movida para a posicao destino");
 		}
 	}
 	
